@@ -1,4 +1,8 @@
 import React from "react";
+import { Manrope } from "next/font/google";
+import "./globals.css";
+
+const font = Manrope({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -7,7 +11,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="">{children}</body>
+      <body className={font.className}>{children}</body>
     </html>
   );
 }
