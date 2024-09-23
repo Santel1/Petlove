@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useEffect } from "react";
-import Navbar from "./navbar";
+
 import clsx from "clsx";
 import Image from "next/image";
+import NavItem from "./nav-item";
 
 export interface SidebarProps {
   pathname: string;
@@ -49,38 +50,38 @@ export default function Sidebar({ pathname, visible, onClose }: SidebarProps) {
       >
         <div className="flex-grow flex flex-col justify-center gap-[20px]">
           <ul className="flex flex-col gap-[20px] items-center">
-            <Navbar
+            <NavItem
               pathname="/news"
               current={pathname === "/news"}
               onClose={onClose}
             >
               News
-            </Navbar>
-            <Navbar
+            </NavItem>
+            <NavItem
               pathname="/findpet"
               current={pathname === "/findpet"}
               onClose={onClose}
             >
               Find pet
-            </Navbar>
-            <Navbar
+            </NavItem>
+            <NavItem
               pathname="/ourfriends"
               current={pathname === "/ourfriends"}
               onClose={onClose}
             >
               Our Friends
-            </Navbar>
+            </NavItem>
           </ul>
         </div>
 
         <div className="flex-shrink-0">
           <ul className="flex flex-col md:flex-row md:justify-center gap-[20px] md:gap-[10px]">
-            <Navbar pathname="signin" variant="yellow" onClose={onClose}>
+            <NavItem pathname="signin" variant="yellow" onClose={onClose}>
               Login
-            </Navbar>
-            <Navbar pathname="signup" variant="yellowLight" onClose={onClose}>
+            </NavItem>
+            <NavItem pathname="signup" variant="yellowLight" onClose={onClose}>
               Register
-            </Navbar>
+            </NavItem>
           </ul>
         </div>
 

@@ -4,17 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 export interface NotFoundProps {}
-{
-  /* <div
-  className="bg-red-500
-    sm:bg-green-500
-     md:bg-blue-500
-      lg:bg-yellow-500
-       xl:bg-purple-500"
->
-  Респонсивный блок
-</div>; */
-}
 
 export default function NotFound({}: NotFoundProps) {
   return (

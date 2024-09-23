@@ -1,12 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Navbar from "./navbar";
 import { useRouter, usePathname } from "next/navigation";
 import Link from "next/link";
 import Sidebar from "./sidebar";
 import clsx from "clsx";
 import Image from "next/image";
+import NavItem from "./nav-item";
 
 export interface HeaderProps {}
 
@@ -40,24 +40,24 @@ export default function Header({}: HeaderProps) {
       </div>
 
       <ul className="hidden lg:flex gap-[10px]">
-        <Navbar pathname="/news" current={pathname === "/news"}>
+        <NavItem pathname="/news" current={pathname === "/news"}>
           News
-        </Navbar>
-        <Navbar pathname="/findpet" current={pathname === "/findpet"}>
+        </NavItem>
+        <NavItem pathname="/findpet" current={pathname === "/findpet"}>
           Find pet
-        </Navbar>
-        <Navbar pathname="/ourfriends" current={pathname === "/ourfriends"}>
+        </NavItem>
+        <NavItem pathname="/ourfriends" current={pathname === "/ourfriends"}>
           Our Friends
-        </Navbar>
+        </NavItem>
       </ul>
       <div className="flex gap-[10px]">
         <ul className="hidden md:flex lg:flex gap-[10px]">
-          <Navbar pathname="signin" variant="yellow">
+          <NavItem pathname="signin" variant="yellow">
             Login
-          </Navbar>
-          <Navbar pathname="signup" variant="yellowLight">
+          </NavItem>
+          <NavItem pathname="signup" variant="yellowLight">
             Registration
-          </Navbar>
+          </NavItem>
         </ul>
         <button
           className={clsx(visible && "hidden", "lg:hidden")}

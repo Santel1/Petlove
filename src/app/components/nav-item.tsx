@@ -2,7 +2,7 @@ import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
 
-export interface NavbarProps {
+export interface NavItemProps {
   variant?: "gray" | "yellow" | "yellowLight";
   current?: boolean;
   pathname: string;
@@ -10,13 +10,13 @@ export interface NavbarProps {
   onClose?: () => void;
 }
 
-export default function Navbar({
+export default function NavItem({
   variant = "gray",
   current,
   pathname,
   children,
   onClose,
-}: NavbarProps) {
+}: NavItemProps) {
   const variantStyles = {
     gray: "w-[120px] lg:w-auto p-[15px] lg:p-[15px_20px] border border-[#757575] rounded-[30px] font-medium text-[14px] tracking-tight leading-[1.29] text-center focus:border-[#f6b83d] hover:border-[#f6b83d]",
     yellow:

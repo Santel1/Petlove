@@ -1,6 +1,5 @@
 import List from "@/app/components/list";
 import OurfriendsItem from "@/app/components/our-friends-item";
-import Image from "next/image";
 import React from "react";
 
 export interface PageProps {}
