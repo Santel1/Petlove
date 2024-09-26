@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
-import HeroAuth from "../../components/hero-auth";
+import HeroAuth from "../../../components/hero-auth";
 import * as Yup from "yup";
-import InputField from "@/app/components/input-fields";
-import FormWrapper from "@/app/components/form-wrapper";
+import InputField from "@/components/input-fields";
+import FormWrapper from "@/components/form-wrapper";
 
 export interface PageProps {}
 
@@ -37,7 +37,7 @@ export default function Page({}: PageProps) {
   };
 
   return (
-    <div className="flex flex-col gap-[10px] md:gap-[16px] min-w-[320px] px-[20px] md:px-[32px] pb-[20px] md:pb-[32px] lg:flex-row lg:gap-[10px] lg:h-[calc(100vh-89px)]">
+    <div className="flex flex-col gap-[10px] md:gap-[16px] min-w-[320px] px-[20px] md:px-[32px] pb-[20px] md:pb-[32px] xl:flex-row xl:gap-[10px] xl:h-[calc(100vh-89px)]">
       <HeroAuth
         imageUrl="/images/register_img.png"
         imageAlt="Register image"

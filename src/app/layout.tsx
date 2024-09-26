@@ -4,6 +4,10 @@ import "./globals.css";
 
 const font = Manrope({ subsets: ["latin"] });
 
+export const metadata = {
+  title: "Petlove",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{

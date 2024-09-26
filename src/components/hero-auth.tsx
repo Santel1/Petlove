@@ -24,12 +24,12 @@ export default function HeroAuth({
     bg-[length:80%_auto] 
     md:bg-[length:80%_auto]
     bg-[position:center_30px]
-    lg:items-end
-    lg:bg-[position:center_30px]
-    lg:bg-[length:90%_100%]
-    lg:h-full lg:flex-1"
+    xl:items-end
+    xl:bg-[position:center_30px]
+    xl:bg-[length:90%_100%]
+    xl:h-full xl:flex-1"
     >
-      <div className="hidden md:grid grid-flow-col gap-[8px] w-[294px] bg-white rounded-[20px] p-[16px] z-20 lg:absolute lg:left-[61px] lg:bottom-[97px]">
+      <div className="hidden md:grid grid-flow-col gap-[8px] w-[294px] bg-white rounded-[20px] p-[16px] z-20 xl:absolute xl:left-[61px] xl:bottom-[97px]">
         <div className="w-[60px] h-[60px] items-center flex justify-center rounded-full bg-[#FFF4DF]">
           <p className="text-[32px] overflow-hidden leading-none">{emoji}</p>
         </div>
@@ -51,7 +51,7 @@ export default function HeroAuth({
       <Image
         width={335}
         height={280}
-        className="lg:w-[520px]"
+        className="xl:w-[520px]"
         unoptimized
         src={imageUrl}
         alt={imageAlt}

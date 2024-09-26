@@ -32,14 +32,14 @@ export default function Header({}: HeaderProps) {
   }, [visible]);
 
   return (
-    <header className="flex min-w-[320px] justify-between p-[20px] md:p-[32px] lg:p-[20px_64px]">
+    <header className="flex min-w-[320px] justify-between p-[20px] md:p-[32px] xl:p-[20px_64px]">
       <div>
         <Link href="/">
           <Image width={105} height={28} src="/icons/logo.svg" alt="logo" />
         </Link>
       </div>
 
-      <ul className="hidden lg:flex gap-[10px]">
+      <ul className="hidden xl:flex gap-[10px]">
         <NavItem pathname="/news" current={pathname === "/news"}>
           News
         </NavItem>
@@ -51,7 +51,7 @@ export default function Header({}: HeaderProps) {
         </NavItem>
       </ul>
       <div className="flex gap-[10px]">
-        <ul className="hidden md:flex lg:flex gap-[10px]">
+        <ul className="hidden md:flex xl:flex gap-[10px]">
           <NavItem pathname="signin" variant="yellow">
             Login
           </NavItem>
@@ -60,7 +60,7 @@ export default function Header({}: HeaderProps) {
           </NavItem>
         </ul>
         <button
-          className={clsx(visible && "hidden", "lg:hidden")}
+          className={clsx(visible && "hidden", "xl:hidden")}
           onClick={() => setVisible(!visible)}
         >
           <Image

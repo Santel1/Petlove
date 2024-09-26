@@ -1,5 +1,5 @@
 import React from "react";
-import Header from "./components/header";
+import Header from "../components/header";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,7 +18,7 @@ export default function NotFound({}: NotFoundProps) {
             width={109}
             height={109}
             unoptimized
-            className="md:w-[280px] lg:w-[300px]"
+            className="md:w-[280px] xl:w-[300px]"
             src="/images/IMG_404.png"
             alt="404 image"
           />

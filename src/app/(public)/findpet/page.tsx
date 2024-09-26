@@ -1,4 +1,4 @@
-import List from "@/app/components/list";
+import List from "@/components/list";
 import Image from "next/image";
 import React from "react";
 

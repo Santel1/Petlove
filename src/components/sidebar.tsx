@@ -34,14 +34,14 @@ export default function Sidebar({ pathname, visible, onClose }: SidebarProps) {
       {visible && (
         <div
           className={clsx(
-            "fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+            "fixed inset-0 bg-black bg-opacity-50 z-40 xl:hidden"
           )}
           onClick={onClose}
         />
       )}
       <div
         className={clsx(
-          "fixed top-0 right-0 p-[40px] w-[218px] md:w-[374px] h-full flex gap-[20px]  flex-col bg-white z-50 overflow-hidden transform transition-transform duration-300 lg:hidden",
+          "fixed top-0 right-0 p-[40px] w-[218px] md:w-[374px] h-full flex gap-[20px]  flex-col bg-white z-50 overflow-hidden transform transition-transform duration-300 xl:hidden",
           {
             "translate-x-0": visible,
             "translate-x-full": !visible,

@@ -1,9 +1,9 @@
 "use client";
 import React, { useState } from "react";
 import * as Yup from "yup";
-import HeroAuth from "../../components/hero-auth";
-import FormWrapper from "@/app/components/form-wrapper";
-import InputField from "@/app/components/input-fields";
+import HeroAuth from "../../../components/hero-auth";
+import FormWrapper from "@/components/form-wrapper";
+import InputField from "@/components/input-fields";
 
 export interface PageProps {
   email: string;
@@ -32,7 +32,7 @@ export default function Page({}: PageProps) {
     console.log(values);
   };
   return (
-    <div className="flex flex-col gap-[10px] md:gap-[16px] min-w-[320px] px-[20px] md:px-[32px] pb-[20px] lg:flex-row md:pb-[32px] lg:gap-[10px] lg:h-[calc(100vh-89px)]">
+    <div className="flex flex-col gap-[10px] md:gap-[16px] min-w-[320px] px-[20px] md:px-[32px] pb-[20px] xl:flex-row md:pb-[32px] xl:gap-[10px] xl:h-[calc(100vh-89px)]">
       <HeroAuth
         imageUrl="/images/login_img.png"
         imageAlt="Login image"

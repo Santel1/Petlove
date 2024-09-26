@@ -1,6 +1,6 @@
-import List from "@/app/components/list";
-import NewsItem from "@/app/components/news-item";
-import Title from "@/app/components/title";
+import List from "@/components/list";
+import NewsItem from "@/components/news-item";
+import Title from "@/components/title";
 import Image from "next/image";
 import React from "react";
 
@@ -8,8 +8,8 @@ export interface PageProps {}
 
 export default function Page({}: PageProps) {
   return (
-    <div className="px-[20px] pb-[20px] md:px-[32px] md:pb-[32px] lg:px-[64px]">
-      <div className="flex flex-col gap-[20px] mb-[24px] md:mb-[44px] lg:mb-[60px] w-full md:flex-row md:justify-between ">
+    <div className="px-[20px] pb-[20px] md:px-[32px] md:pb-[32px] xl:px-[64px]">
+      <div className="flex flex-col gap-[20px] mb-[24px] md:mb-[44px] xl:mb-[60px] w-full md:flex-row md:justify-between ">
         <Title>News</Title>
         <div className="relative">
           <input

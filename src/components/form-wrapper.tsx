@@ -27,7 +27,7 @@ const FormWrapper: React.FC<FormWrapperProps> = ({
   validationSchema,
 }) => {
   return (
-    <div className="rounded-[30px] md:rounded-[60px] py-[60px] px-[20px] bg-white flex flex-col items-center justify-center lg:flex-1">
+    <div className="rounded-[30px] md:rounded-[60px] py-[60px] px-[20px] bg-white flex flex-col items-center justify-center xl:flex-1">
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
