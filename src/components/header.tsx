@@ -32,7 +32,14 @@ export default function Header({}: HeaderProps) {
   }, [visible]);
 
   return (
-    <header className="flex min-w-[320px] justify-between p-[20px] md:p-[32px] xl:p-[20px_64px]">
+    <header
+      className={`max-w-[1280px] mx-auto flex justify-between items-center min-w-[320px] p-[28px_20px_20px_20px] md:p-[32px] xl:p-[32px_64px] ${
+        (pathname === "/ourfriends" ||
+          pathname === "/news" ||
+          pathname === "/findpet") &&
+        "mb-[34px] md:mb-[53px] xl:mb-[64px]"
+      }`}
+    >
       <div>
         <Link href="/">
           <Image width={105} height={28} src="/icons/logo.svg" alt="logo" />

@@ -1,5 +1,3 @@
-import { cache } from "react";
-
 export interface WorkDay {
   _id: string;
   isOpen: boolean;
@@ -14,6 +12,23 @@ export interface OurFriends {
   workDays: WorkDay[];
   phone: string;
   email: string;
+}
+
+export interface News {
+  page: number;
+  perPage: number;
+  totalPages: number;
+  results: NewsResults[];
+}
+
+export interface NewsResults {
+  _id: string;
+  imgUrl: string;
+  title: string;
+  text: string;
+  date: string;
+  url: string;
+  id: string;
 }
 
 const PROJECT_TOKEN = process.env.NEXT_PUBLIC_PROJECT_TOKEN;
@@ -35,4 +50,9 @@ const sendRequest = async <T>(url: string, init?: RequestInit) => {
 
 export const getOurFriends = (init?: RequestInit) => {
   return sendRequest<OurFriends[]>(buildUrl("friends"), init);
+};
+
+export const getNews = (page = 1, init?: RequestInit) => {
+  const query = stringifyQueryParams({ page: page.toString() });
+  return sendRequest<News>(`${buildUrl("news")}?${query}`, init);
 };

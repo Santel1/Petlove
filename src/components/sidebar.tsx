@@ -15,7 +15,7 @@ export interface SidebarProps {
 export default function Sidebar({ pathname, visible, onClose }: SidebarProps) {
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 1024) {
+      if (window.innerWidth >= 1280) {
         onClose();
       }
     };

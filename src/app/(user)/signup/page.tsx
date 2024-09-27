@@ -37,7 +37,7 @@ export default function Page({}: PageProps) {
   };
 
   return (
-    <div className="flex flex-col gap-[10px] md:gap-[16px] min-w-[320px] px-[20px] md:px-[32px] pb-[20px] md:pb-[32px] xl:flex-row xl:gap-[10px] xl:h-[calc(100vh-89px)]">
+    <div className="flex flex-col gap-[10px] md:gap-[16px]  xl:flex-row xl:gap-[10px] xl:h-[calc(100vh-89px)]">
       <HeroAuth
         imageUrl="/images/register_img.png"
         imageAlt="Register image"

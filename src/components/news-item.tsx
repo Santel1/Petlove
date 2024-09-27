@@ -19,17 +19,23 @@ export default function NewsItem({
   buttonText,
 }: NewsItemProps) {
   return (
-    <li className="flex flex-col max-w-[335px] md:max-w-[340px] xl:max-w-[361px] justify-self-center">
-      <div className="relative overflow-hidden rounded-[30px] max-w-[335px] h-[190px] mb-[20px] md:mb-[28px] md:rounded-[15px] md:max-w-[340px] md:h-[226px] xl:max-w-[361px]">
-        <Image className="object-cover" src={src} fill alt={alt} />
+    <li className="flex flex-col max-w-[335px] md:max-w-[342px] xl:max-w-[361px]">
+      <Image
+        className="relative max-h-[190px] object-cover w-full rounded-[30px] max-w-[335px] mb-[20px] md:max-h-[226px] md:mb-[28px] md:rounded-[15px] md:max-w-[342px] md:h-[226px] xl:max-w-[361px]"
+        src={src}
+        width={335}
+        height={190}
+        alt={alt}
+      />
+      <div className="flex flex-col gap-[12px] md:gap-[14px] mb-[19px] md:mb-[28px]">
+        <p className="font-bold text-[16px] leading-tight tracking-tight text-[#262626] md:text-[20px]">
+          {title}
+        </p>
+        <p className="font-medium text-[14px] leading-tight tracking-tight text-[#262626] md:text-[16px]">
+          {description}
+        </p>
       </div>
-      <p className="font-bold text-[16px] leading-tight tracking-tight text-[#262626] mb-[12px] md:text-[20px] md:mb-[14px]">
-        {title}
-      </p>
-      <p className="font-medium text-[14px] leading-tight tracking-tight text-[#262626] mb-[19px] md:text-[16px] md:mb-[28px]">
-        {description}
-      </p>
-      <div className="flex justify-between">
+      <div className="flex w-full justify-between flex-1 items-end">
         <p className="font-medium text-[14px] leading-tight tracking-tight text-[#757575] md:text-[16px]">
           {date}
         </p>
