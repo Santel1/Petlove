@@ -31,6 +31,30 @@ export interface NewsResults {
   id: string;
 }
 
+export interface Pets {
+  page: number;
+  perPage: number;
+  totalPages: number;
+  results: PetsResults[];
+}
+
+export interface PetsResults {
+  _id: string;
+  species: string;
+  category: string;
+  title: string;
+  name: string;
+  birthday: string;
+  comment: string;
+  sex: string;
+  location: string;
+  imgURL: string;
+  createdAt: string;
+  user: string;
+  popularity: string;
+  updatedAt: string;
+}
+
 const PROJECT_TOKEN = process.env.NEXT_PUBLIC_PROJECT_TOKEN;
 
 const buildUrl = (...paths: string[]) =>
@@ -55,4 +79,9 @@ export const getOurFriends = (init?: RequestInit) => {
 export const getNews = (page = 1, init?: RequestInit) => {
   const query = stringifyQueryParams({ page: page.toString() });
   return sendRequest<News>(`${buildUrl("news")}?${query}`, init);
+};
+
+export const getPets = (page = 1, init?: RequestInit) => {
+  const query = stringifyQueryParams({ page: page.toString() });
+  return sendRequest<Pets>(`${buildUrl("notices")}?${query}`, init);
 };

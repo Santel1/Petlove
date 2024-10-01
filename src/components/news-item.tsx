@@ -35,11 +35,11 @@ export default function NewsItem({
           {description}
         </p>
       </div>
-      <div className="flex w-full justify-between flex-1 items-end">
+      <div className="flex justify-between flex-1 items-end">
         <p className="font-medium text-[14px] leading-tight tracking-tight text-[#757575] md:text-[16px]">
           {date}
         </p>
-        <button className="font-medium text-[14px] leading-tight tracking-tight text-[#f6b83d] underline md:text-[16px]">
+        <button className="font-medium text-[14px] leading-tight tracking-tight text-[#f6b83d] underline md:text-[16px] hover:bg-[#fbe7c1] transition-all">
           {buttonText}
         </button>
       </div>

@@ -1,10 +1,9 @@
 "use client";
 
 import React, { useEffect } from "react";
-
 import clsx from "clsx";
-import Image from "next/image";
 import NavItem from "./nav-item";
+import CrossIcon from "../../public/icons/cross-small.svg";
 
 export interface SidebarProps {
   pathname: string;
@@ -87,14 +86,9 @@ export default function Sidebar({ pathname, visible, onClose }: SidebarProps) {
 
         <button
           onClick={onClose}
-          className="absolute top-[39px] right-[32px] border border-transparent rounded-full hover:border-[#f6b83d] focus:border-[#f6b83d]"
+          className="absolute top-[39px] right-[32px] border border-transparent rounded-full transition-all hover:stroke-[#f6b83d] focus:stroke-[#f6b83d] stroke-black stroke-[3px]"
         >
-          <Image
-            width={20}
-            height={20}
-            src={"/icons/cross-small.svg"}
-            alt="close button"
-          />
+          <CrossIcon className="h-[32px] w-[32px]" />
         </button>
       </div>
     </>

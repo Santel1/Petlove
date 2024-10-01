@@ -1,27 +1,27 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import List from "./list";
-import NewsItem from "./news-item";
-import { getNews, NewsResults } from "@/lib/api";
+import { getPets, PetsResults } from "@/lib/api";
 import PaginationButton from "./paginationButton";
 import ArrowDoubleLeft from "../../public/icons/arrow-left-2.svg";
 import ArrowDoubleRight from "../../public/icons/arrow-right-2.svg";
 import ArrowRight from "../../public/icons/arrow-right.svg";
 import ArrowLeft from "../../public/icons/arrow-left.svg";
 import clsx from "clsx";
-export interface NewsProps {}
+import PetItem from "./pet-item";
+import List from "./list";
+export interface PetsProps {}
 
-export default function News({}: NewsProps) {
-  const [news, setNews] = useState<NewsResults[]>([]);
+export default function Pets({}: PetsProps) {
+  const [pets, setPets] = useState<PetsResults[]>([]);
   const [page, setPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
-    getNews(page)
+    getPets(page)
       .then((response) => {
-        setNews(response.results);
+        setPets(response.results);
         setTotalPages(response.totalPages);
         setLoading(false);
         console.log(page);
@@ -38,7 +38,7 @@ export default function News({}: NewsProps) {
   const goToLastPage = () => setPage(totalPages);
 
   const goToNumberPage = (pageNumber: number) => {
-    getNews(pageNumber);
+    getPets(pageNumber);
     setPage(pageNumber);
   };
 
@@ -47,15 +47,21 @@ export default function News({}: NewsProps) {
   return (
     <div className=" flex flex-col items-center">
       <List className="mb-[44px]">
-        {news.map((newsItem) => (
-          <NewsItem
-            key={newsItem._id}
-            src={newsItem.imgUrl}
-            alt={newsItem.title || "News image"}
-            title={newsItem.title}
-            description={newsItem.text}
-            date={new Date(newsItem.date).toLocaleDateString()}
-            buttonText={"Read more"}
+        {pets.map((petsItem) => (
+          <PetItem
+            key={petsItem._id}
+            imgURL={petsItem.imgURL}
+            petTitle={petsItem.title}
+            petName={petsItem.name}
+            petBirthday={
+              petsItem.birthday
+                ? petsItem.birthday.split("-").reverse().join(".")
+                : "Unknown"
+            }
+            petSex={petsItem.sex}
+            petSpecies={petsItem.species}
+            petCategory={petsItem.category}
+            petDescription={petsItem.comment}
           />
         ))}
       </List>

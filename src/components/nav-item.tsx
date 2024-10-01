@@ -32,7 +32,7 @@ export default function NavItem({
         className={clsx(
           variantStyles[variant],
           current && "border-[#f6b83d]",
-          "flex flex-col gap-2px"
+          "flex flex-col gap-2px transition-all"
         )}
         onClick={onClose}
       >

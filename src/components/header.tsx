@@ -7,6 +7,7 @@ import Sidebar from "./sidebar";
 import clsx from "clsx";
 import Image from "next/image";
 import NavItem from "./nav-item";
+import BurgerIcon from "../../public/icons/burger-menu.svg";
 
 export interface HeaderProps {}
 
@@ -33,12 +34,15 @@ export default function Header({}: HeaderProps) {
 
   return (
     <header
-      className={`max-w-[1280px] mx-auto flex justify-between items-center min-w-[320px] p-[28px_20px_20px_20px] md:p-[32px] xl:p-[32px_64px] ${
-        (pathname === "/ourfriends" ||
-          pathname === "/news" ||
-          pathname === "/findpet") &&
-        "mb-[34px] md:mb-[53px] xl:mb-[64px]"
-      }`}
+      className={clsx(
+        "max-w-[1280px] mx-auto flex justify-between items-center min-w-[320px] p-[28px_20px_20px_20px] md:p-[32px] xl:p-[32px_64px]",
+        {
+          "mb-[34px] md:mb-[53px] xl:mb-[64px]":
+            pathname === "/ourfriends" ||
+            pathname === "/news" ||
+            pathname === "/findpet",
+        }
+      )}
     >
       <div>
         <Link href="/">
@@ -67,15 +71,14 @@ export default function Header({}: HeaderProps) {
           </NavItem>
         </ul>
         <button
-          className={clsx(visible && "hidden", "xl:hidden")}
+          className={clsx(
+            "stroke-[#262626] hover:stroke-[#f6b83d] transition-all",
+            visible && "hidden",
+            "xl:hidden"
+          )}
           onClick={() => setVisible(!visible)}
         >
-          <Image
-            width={30}
-            height={28}
-            src="/icons/burger-menu.svg"
-            alt="logo"
-          />
+          <BurgerIcon className="w-[32px] h-[32px] stroke-[3px]" />
         </button>
         <Sidebar
           pathname={pathname}
