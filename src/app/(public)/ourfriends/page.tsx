@@ -1,10 +1,11 @@
 import Ourfriends from "@/components/ourfriends";
 import Title from "@/components/title";
+import { Metadata } from "next";
 import React from "react";
 
 export interface PageProps {}
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Petlove - Our Friends",
 };
 

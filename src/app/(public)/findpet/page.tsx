@@ -1,9 +1,10 @@
 import React from "react";
 import Pets from "@/components/findPet";
 import Title from "@/components/title";
+import { Metadata } from "next";
 export interface PageProps {}
 
-export const metadata = {
+export const metadata: Metadata = {
   title: "Petlove - Find your favorite pet",
 };
 

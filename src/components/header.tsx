@@ -46,7 +46,13 @@ export default function Header({}: HeaderProps) {
     >
       <div>
         <Link href="/">
-          <Image width={105} height={28} src="/icons/logo.svg" alt="logo" />
+          <Image
+            width={105}
+            height={28}
+            priority
+            src="/icons/logo-header.svg"
+            alt="logo"
+          />
         </Link>
       </div>
 
