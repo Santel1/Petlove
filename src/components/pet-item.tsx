@@ -11,6 +11,7 @@ export interface PetItemProps {
   petSpecies: string;
   petCategory: string;
   petDescription: string;
+  popularity: string;
   textButton?: string;
 }
 
@@ -23,10 +24,11 @@ export default function PetItem({
   petSpecies,
   petCategory,
   petDescription,
+  popularity,
   textButton = "Learn more",
 }: PetItemProps) {
   return (
-    <li className="flex flex-col max-w-[335px]">
+    <li className="flex flex-col max-w-[335px] p-[24px] bg-white rounded-[16px]">
       <Image
         src={imgURL}
         width={365}
@@ -36,13 +38,18 @@ export default function PetItem({
           petSpecies.slice(1).toLowerCase() +
           " image"
         }
-        className="mb-[24px]"
+        className="mb-[24px] max-h-[178px] object-cover w-full rounded-[16px] max-w-[287px] md:max-h-[226px] md:mb-[28px] md:rounded-[15px] md:max-w-[342px] md:h-[226px] xl:max-w-[361px]"
       />
       <div className="mb-[8px] flex justify-between">
         <p className="font-bold text-[16px] leading-tight text-[#2b2b2a]">
           {petTitle}
         </p>
-        <button>STAR</button>
+        <div className="flex gap-[1px]">
+          <Image src={"/icons/star.svg"} alt={"Star"} width={16} height={16} />
+          <p className="text-[14px] leading-tight font-medium text-[#2b2b2a]">
+            {popularity}
+          </p>
+        </div>
       </div>
       <ul className="flex gap-[14px] mb-[16px]">
         <li className="font-medium text-[10px] leading-snug tracking-tight text-[#757575]">
@@ -86,8 +93,8 @@ export default function PetItem({
         >
           {textButton}
         </button>
-        <button className="rounded-full bg-[#fff4df] p-[14px] fill-none stroke-[#f6b83d] hover:fill-[#f6b83d] transition-all">
-          <Heart className="w-[18px] h-[18px] " />
+        <button className="rounded-full bg-[#fff4df] p-[14px] fill-transparent stroke-[#f6b83d] hover:fill-[#f6b83d] transition-colors duration-300">
+          <Heart className="w-[18px] h-[18px]" />
         </button>
       </div>
     </li>

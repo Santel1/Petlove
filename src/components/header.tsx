@@ -1,25 +1,25 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { useRouter, usePathname } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Sidebar from "./sidebar";
 import clsx from "clsx";
 import Image from "next/image";
 import NavItem from "./nav-item";
 import BurgerIcon from "../../public/icons/burger-menu.svg";
+import { signout, User } from "@/auth/auth";
+import Button from "./button";
 
-export interface HeaderProps {}
+export interface HeaderProps {
+  user?: User | null;
+}
 
-export default function Header({}: HeaderProps) {
+export default function Header({ user }: HeaderProps) {
   const [visible, setVisible] = useState(false);
-  const router = useRouter();
 
   const pathname = usePathname();
-
-  const handleExitClick = () => {
-    router.push("/");
-  };
+  console.log(user);
 
   useEffect(() => {
     if (visible) {
@@ -68,14 +68,27 @@ export default function Header({}: HeaderProps) {
         </NavItem>
       </ul>
       <div className="flex gap-[10px]">
-        <ul className="hidden md:flex xl:flex gap-[10px]">
-          <NavItem pathname="signin" variant="yellow">
-            Login
-          </NavItem>
-          <NavItem pathname="signup" variant="yellowLight">
-            Registration
-          </NavItem>
-        </ul>
+        {user ? (
+          <div className="hidden md:flex xl:flex gap-[10px] items-center">
+            <Button
+              onClick={async () => {
+                await signout();
+              }}
+            >
+              Logout
+            </Button>
+            <p className="">{user.name}</p>
+          </div>
+        ) : (
+          <ul className="hidden md:flex xl:flex gap-[10px]">
+            <NavItem pathname="signin" variant="yellow">
+              Login
+            </NavItem>
+            <NavItem pathname="signup" variant="yellowLight">
+              Registration
+            </NavItem>
+          </ul>
+        )}
         <button
           className={clsx(
             "stroke-[#262626] hover:stroke-[#f6b83d] transition-all",
@@ -87,6 +100,7 @@ export default function Header({}: HeaderProps) {
           <BurgerIcon className="w-[32px] h-[32px] stroke-[3px]" />
         </button>
         <Sidebar
+          user={user}
           pathname={pathname}
           visible={visible}
           onClose={() => setVisible(false)}

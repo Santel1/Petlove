@@ -1,24 +1,16 @@
 "use client";
 import React, { useState } from "react";
-import * as Yup from "yup";
 import HeroAuth from "../../../components/hero-auth";
 import FormWrapper from "@/components/form-wrapper";
 import InputField from "@/components/input-fields";
+import { signin } from "@/auth/auth";
+import { SigninValidationSchema } from "@/auth/definitions";
+import { FormikHelpers } from "formik";
 
 export interface PageProps {
   email: string;
   password: string;
 }
-
-const validationSchema = Yup.object({
-  email: Yup.string()
-    .required("Email is required")
-    .email("Invalid email address"),
-  password: Yup.string()
-    .min(8, "Password must be at least 8 characters")
-    .max(24, "Password is too long")
-    .required("Password is required"),
-});
 
 const initialValues: PageProps = {
   email: "",
@@ -28,9 +20,34 @@ const initialValues: PageProps = {
 export default function Page({}: PageProps) {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (values: any) => {
-    console.log(values);
+  const handleSubmit = async (
+    values: any,
+    { setErrors, resetForm }: FormikHelpers<any>
+  ) => {
+    try {
+      const data = await signin(values.email, values.password);
+      console.log("Авторизирован пользователь:", data);
+      resetForm(); 
+    } catch (error: any) {
+      let errorMessage;
+      try {
+        const parsedError = JSON.parse(error.message);
+        errorMessage = parsedError?.message || "Unknown error";
+      } catch (parseError) {
+        errorMessage = error.message;
+      }
+
+      console.log(errorMessage);
+
+      if (errorMessage) {
+        setErrors({
+          email: " ",
+          password: errorMessage,
+        });
+      }
+    }
   };
+
   return (
     <div className="flex flex-col gap-[10px] md:gap-[16px] xl:flex-row xl:gap-[10px] xl:h-[calc(100vh-89px)]">
       <HeroAuth
@@ -44,15 +61,15 @@ export default function Page({}: PageProps) {
               playmate too!"
       />
       <FormWrapper
-        title=" Log in"
-        description=" Welcome! Please enter your credentials to login to the
+        title="Log in"
+        description="Welcome! Please enter your credentials to login to the
                   platform:"
         buttonText=" Login"
         footerText="Don't have an account?&nbsp;"
         footerLink="/signup"
         footerLinkText="Register"
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={SigninValidationSchema}
         onSubmit={handleSubmit}
       >
         {({ touched, errors }) => (

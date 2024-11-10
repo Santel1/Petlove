@@ -1,4 +1,4 @@
-import Ourfriends from "@/components/ourfriends";
+import Ourfriends from "@/components/our-friends";
 import Title from "@/components/title";
 import { Metadata } from "next";
 import React from "react";

@@ -1,4 +1,4 @@
-import { Form, Formik } from "formik";
+import { Form, Formik, FormikHelpers } from "formik";
 import React from "react";
 
 interface FormWrapperProps {
@@ -10,7 +10,8 @@ interface FormWrapperProps {
   footerLinkText: string;
   initialValues: {};
   validationSchema: {};
-  onSubmit: (values: any) => void;
+  // onSubmit: (values: any) => void;
+  onSubmit: (values: any, formikHelpers: FormikHelpers<any>) => void;
   children: (props: { touched: any; errors: any }) => React.ReactNode;
 }
 

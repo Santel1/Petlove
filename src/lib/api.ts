@@ -57,13 +57,13 @@ export interface PetsResults {
 
 const PROJECT_TOKEN = process.env.NEXT_PUBLIC_PROJECT_TOKEN;
 
-const buildUrl = (...paths: string[]) =>
+export const buildUrl = (...paths: string[]) =>
   `https://${PROJECT_TOKEN}/api/${paths.join("/")}`;
 
-const stringifyQueryParams = (params: Record<string, string>) =>
+export const stringifyQueryParams = (params: Record<string, string>) =>
   new URLSearchParams(params).toString();
 
-const sendRequest = async <T>(url: string, init?: RequestInit) => {
+export const sendRequest = async <T>(url: string, init?: RequestInit) => {
   const res = await fetch(url, init);
   if (!res.ok) {
     throw new Error(await res.text());

@@ -1,28 +1,20 @@
 "use client";
 import React, { useState } from "react";
 import HeroAuth from "../../../components/hero-auth";
-import * as Yup from "yup";
 import InputField from "@/components/input-fields";
 import FormWrapper from "@/components/form-wrapper";
+import { signup } from "@/auth/auth";
+import { SignupValidationSchema } from "@/auth/definitions";
+import { FormikHelpers } from "formik";
 
-export interface PageProps {}
+export interface PageProps {
+  name: string;
+  email: string;
+  password: string;
+  confirmPassword: string;
+}
 
-const validationSchema = Yup.object({
-  name: Yup.string().required("Name is required").min(3),
-  email: Yup.string()
-    .email("Enter a valid Email")
-    .required("Email is required"),
-  password: Yup.string()
-    .required("Password is required")
-    .min(8, "Password must be at least 8 characters")
-    .max(24, "Password is too long"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password")], "Passwords must match")
-    .required("Password confirmation is required")
-    .min(8),
-});
-
-const initialValues = {
+const initialValues: PageProps = {
   name: "",
   email: "",
   password: "",
@@ -32,8 +24,32 @@ const initialValues = {
 export default function Page({}: PageProps) {
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleSubmit = (values: any) => {
-    console.log(values);
+  const handleSubmit = async (
+    values: any,
+    { setErrors, resetForm }: FormikHelpers<any>
+  ) => {
+    try {
+      const data = await signup(values.name, values.email, values.password);
+      console.log("Авторизирован пользователь:", data);
+      resetForm();
+    } catch (error: any) {
+      let errorMessage;
+      try {
+        const parsedError = JSON.parse(error.message);
+        errorMessage = parsedError?.message || "Unknown error";
+      } catch (parseError) {
+        errorMessage = error.message;
+      }
+
+      console.log(errorMessage);
+
+      if (errorMessage) {
+        setErrors({
+          email: " ",
+          password: errorMessage,
+        });
+      }
+    }
   };
 
   return (
@@ -52,10 +68,10 @@ export default function Page({}: PageProps) {
         description="Thank you for your interest in our platform."
         buttonText="Register"
         footerText="Don't have an account?"
-        footerLink="/login"
+        footerLink="/signin"
         footerLinkText="Log In"
         initialValues={initialValues}
-        validationSchema={validationSchema}
+        validationSchema={SignupValidationSchema}
         onSubmit={handleSubmit}
       >
         {({ touched, errors }) => (

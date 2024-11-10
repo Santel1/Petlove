@@ -7,7 +7,7 @@ export interface ButtonProps
   variant?: "yellow" | "yellowLight" | "gray" | "white" | "transparent";
   onClick?: () => void;
   disabled?: boolean;
-  className?: string; // Дополнительные стили
+  className?: string;
 }
 
 export default function Button({
@@ -18,10 +18,10 @@ export default function Button({
   className,
 }: ButtonProps) {
   const baseStyles =
-    "rounded-[30px] p-[12px] md:p-[16px] text-[14px] md:text-[16px] font-[700] leading-tight tracking-tight mb-[12px] md:mb-[16px] transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2";
+    "rounded-[30px] p-[12px] md:p-[16px] text-[14px] md:text-[16px] font-[700] leading-tight tracking-tight transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2";
 
   const variantStyles = {
-    yellow: "bg-[#f6b83d] text-white",
+    yellow: "bg-[#f6b83d] text-white focus:bg-[#f9b020] hover:bg-[#f9b020]",
     yellowLight: "bg-[#fff4df] text-[#f6b83d]",
     gray: "bg-[#757575] text-black",
     white: "bg-white text-black",

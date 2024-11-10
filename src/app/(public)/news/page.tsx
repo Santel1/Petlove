@@ -1,5 +1,5 @@
 import News from "@/components/news";
-import SearchNewsInput from "@/components/searchNewsInput";
+import SearchNewsInput from "@/components/search-news-input";
 import { Metadata } from "next";
 import React from "react";
 

@@ -1,5 +1,5 @@
 import React from "react";
-import Pets from "@/components/findPet";
+import Pets from "@/components/find-pet";
 import Title from "@/components/title";
 import { Metadata } from "next";
 export interface PageProps {}

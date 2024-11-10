@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import List from "./list";
 import NewsItem from "./news-item";
 import { getNews, NewsResults } from "@/lib/api";
-import PaginationButton from "./paginationButton";
+import PaginationButton from "./pagination-button";
 import ArrowDoubleLeft from "../../public/icons/arrow-left-2.svg";
 import ArrowDoubleRight from "../../public/icons/arrow-right-2.svg";
 import ArrowRight from "../../public/icons/arrow-right.svg";

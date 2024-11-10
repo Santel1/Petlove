@@ -50,8 +50,8 @@ const InputField: React.FC<InputFieldProps> = ({
             <Image
               width={20}
               height={20}
-              src={errors ? "/icons/cross-small.svg" : "/icons/check.svg"}
-              alt={errors ? "invalid icon" : "valid icon"}
+              src={errors ? "/icons/cross-auth.svg" : "/icons/check.svg"}
+              alt={errors ? "X" : "✓"}
             />
           </span>
         )}

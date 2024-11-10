@@ -3,15 +3,23 @@
 import React, { useEffect } from "react";
 import clsx from "clsx";
 import NavItem from "./nav-item";
-import CrossIcon from "../../public/icons/cross-small.svg";
+import CrossIcon from "../../public/icons/cross-sidebar.svg";
+import { signout, User } from "@/auth/auth";
+import Button from "./button";
 
 export interface SidebarProps {
+  user?: User | null;
   pathname: string;
   visible: boolean;
   onClose: () => void;
 }
 
-export default function Sidebar({ pathname, visible, onClose }: SidebarProps) {
+export default function Sidebar({
+  pathname,
+  visible,
+  onClose,
+  user,
+}: SidebarProps) {
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 1280) {
@@ -74,14 +82,33 @@ export default function Sidebar({ pathname, visible, onClose }: SidebarProps) {
         </div>
 
         <div className="flex-shrink-0">
-          <ul className="flex flex-col md:flex-row md:justify-center gap-[20px] md:gap-[10px]">
-            <NavItem pathname="signin" variant="yellow" onClose={onClose}>
-              Login
-            </NavItem>
-            <NavItem pathname="signup" variant="yellowLight" onClose={onClose}>
-              Register
-            </NavItem>
-          </ul>
+          {user ? (
+            <div className="flex flex-col md:flex-row md:justify-center gap-[20px] md:gap-[10px]">
+              <p className="flex items-center justify-center md:hidden">
+                {user.name}
+              </p>
+              <Button
+                onClick={async () => {
+                  await signout();
+                }}
+              >
+                Logout
+              </Button>
+            </div>
+          ) : (
+            <ul className="flex flex-col md:flex-row md:justify-center gap-[20px] md:gap-[10px]">
+              <NavItem pathname="signin" variant="yellow" onClose={onClose}>
+                Login
+              </NavItem>
+              <NavItem
+                pathname="signup"
+                variant="yellowLight"
+                onClose={onClose}
+              >
+                Register
+              </NavItem>
+            </ul>
+          )}
         </div>
 
         <button
