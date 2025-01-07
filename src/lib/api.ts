@@ -2,7 +2,7 @@ export interface WorkDay {
   _id: string;
   isOpen: boolean;
 }
-export interface OurFriends {
+export interface OurFriendsResults {
   _id: string;
   title: string;
   url: string;
@@ -73,7 +73,7 @@ export const sendRequest = async <T>(url: string, init?: RequestInit) => {
 };
 
 export const getOurFriends = (init?: RequestInit) => {
-  return sendRequest<OurFriends[]>(buildUrl("friends"), init);
+  return sendRequest<OurFriendsResults[]>(buildUrl("friends"), init);
 };
 
 export const getNews = (page = 1, init?: RequestInit) => {

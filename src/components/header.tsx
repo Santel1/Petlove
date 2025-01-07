@@ -8,6 +8,8 @@ import clsx from "clsx";
 import Image from "next/image";
 import NavItem from "./nav-item";
 import BurgerIcon from "../../public/icons/burger-menu.svg";
+import UserIcon from "../../public/icons/user.svg";
+
 import { signout, User } from "@/auth/auth";
 import Button from "./button";
 
@@ -67,17 +69,25 @@ export default function Header({ user }: HeaderProps) {
           Our Friends
         </NavItem>
       </ul>
-      <div className="flex gap-[10px]">
+      <div className="flex gap-[20px]">
         {user ? (
-          <div className="hidden md:flex xl:flex gap-[10px] items-center">
+          <div className="md:flex xl:flex gap-[10px] items-center">
             <Button
+              className="hidden xl:flex xl:p-[15px_35px]"
               onClick={async () => {
                 await signout();
               }}
             >
-              Logout
+              LOG OUT
             </Button>
-            <p className="">{user.name}</p>
+            <Link href="/profile" className="flex gap-[10px] group">
+              <div className="rounded-full p-[10px] bg-[#fff4df] group-hover:bg-[#f6b83d] fill-[#f6b83d] stroke-[#f6b83d] group-hover:fill-[#fff4df] group-hover:stroke-[#fff4df] transition-all duration-500">
+                <UserIcon className="w-[20px] h-[20px]" />
+              </div>
+              <p className="hidden font-[700] text-[20px] text-[#262626] md:flex items-center group-hover:text-[#f6b83d] transition-all duration-300">
+                {user.name}
+              </p>
+            </Link>
           </div>
         ) : (
           <ul className="hidden md:flex xl:flex gap-[10px]">

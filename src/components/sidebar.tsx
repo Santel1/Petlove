@@ -84,15 +84,13 @@ export default function Sidebar({
         <div className="flex-shrink-0">
           {user ? (
             <div className="flex flex-col md:flex-row md:justify-center gap-[20px] md:gap-[10px]">
-              <p className="flex items-center justify-center md:hidden">
-                {user.name}
-              </p>
               <Button
+                className="md:w-[120px]"
                 onClick={async () => {
                   await signout();
                 }}
               >
-                Logout
+                LOG OUT
               </Button>
             </div>
           ) : (

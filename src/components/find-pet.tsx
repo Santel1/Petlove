@@ -10,6 +10,8 @@ import clsx from "clsx";
 import PetItem from "./pet-item";
 import List from "./list";
 import Loader from "./loader";
+import SearchbarFindpet from "./searchbar-findpet";
+
 export interface PetsProps {}
 
 export default function Pets({}: PetsProps) {
@@ -49,6 +51,7 @@ export default function Pets({}: PetsProps) {
         <Loader />
       ) : (
         <>
+          <SearchbarFindpet />
           <List className="mb-[44px]">
             {pets.map((petsItem) => (
               <PetItem

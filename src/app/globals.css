@@ -11,3 +11,22 @@
 body {
   background-color: #fafafa;
 }
+
+@layer {
+  .scroll-container {
+    padding-right: 16px;
+    overflow-y: scroll;
+  }
+  .scroll-container::-webkit-scrollbar {
+    width: 8px;
+    height: 100px;
+  }
+
+  .scroll-container::-webkit-scrollbar-thumb {
+    background-color: rgba(38, 38, 38, 0.08);
+    border-radius: 13px;
+  }
+  .scroll-container::-webkit-scrollbar-thumb:hover {
+    background-color: #f6b83d;
+  }
+}
