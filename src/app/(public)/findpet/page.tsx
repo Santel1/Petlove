@@ -1,18 +1,20 @@
 import React from "react";
-import Pets from "@/components/find-pet";
-import Title from "@/components/title";
+
 import { Metadata } from "next";
+import FindPetPage from "@/modules/findPetPage/components/FindPetPage/FindPetPage";
+import { insideServerApi as api } from "@/shared/services";
+
 export interface PageProps {}
 
 export const metadata: Metadata = {
   title: "Petlove - Find your favorite pet",
 };
 
-export default function Page({}: PageProps) {
+export default async function Page({}: PageProps) {
+  const pets = await api.getPets();
   return (
     <>
-      <Title className="mb-[40px]">Find your favorite pet</Title>
-      <Pets />
+      <FindPetPage pets={pets.results} />
     </>
   );
 }

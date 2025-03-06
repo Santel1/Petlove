@@ -1,7 +1,7 @@
-import Ourfriends from "@/components/our-friends";
-import Title from "@/components/title";
-import { Metadata } from "next";
 import React from "react";
+import OurFriendsPage from "@/modules/ourFriendsPage/components/OurFriendsPage/OurFriendsPage";
+import { Metadata } from "next";
+import { insideServerApi as api } from "@/shared/services";
 
 export interface PageProps {}
 
@@ -10,10 +10,10 @@ export const metadata: Metadata = {
 };
 
 export default async function Page({}: PageProps) {
+  const ourFriends = await api.getOurFriends();
   return (
     <>
-      <Title className="mb-[60px]">Our Friends</Title>
-      <Ourfriends />
+      <OurFriendsPage ourFriends={ourFriends} />
     </>
   );
 }

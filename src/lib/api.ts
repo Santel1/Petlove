@@ -71,17 +71,3 @@ export const sendRequest = async <T>(url: string, init?: RequestInit) => {
 
   return (await res.json()) as T;
 };
-
-export const getOurFriends = (init?: RequestInit) => {
-  return sendRequest<OurFriendsResults[]>(buildUrl("friends"), init);
-};
-
-export const getNews = (page = 1, init?: RequestInit) => {
-  const query = stringifyQueryParams({ page: page.toString() });
-  return sendRequest<News>(`${buildUrl("news")}?${query}`, init);
-};
-
-export const getPets = (page = 1, init?: RequestInit) => {
-  const query = stringifyQueryParams({ page: page.toString() });
-  return sendRequest<Pets>(`${buildUrl("notices")}?${query}`, init);
-};

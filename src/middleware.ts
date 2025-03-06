@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { cookies } from "next/headers";
 
-const protectedRoutes = ["/profile", "/addpet"];
-const publicRoutes = ["/signin", "/signup"];
+const protectedRoutes = [""];
+const publicRoutes = [""];
 
 export default async function middleware(req: NextRequest) {
   const path = req.nextUrl.pathname;
@@ -21,3 +21,5 @@ export default async function middleware(req: NextRequest) {
 
   return NextResponse.next();
 }
+// const protectedRoutes = ["/profile", "/addpet"];
+// const publicRoutes = ["/signin", "/signup"];
