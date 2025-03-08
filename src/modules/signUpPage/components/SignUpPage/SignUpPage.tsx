@@ -1,13 +1,13 @@
 "use client";
 import React, { useState } from "react";
 
-import { signup } from "@/app/auth/auth";
 import { SignupValidationSchema } from "@/app/auth/definitions";
 import { FormikHelpers } from "formik";
 import FormWrapper from "@/shared/components/FormWrapper/FormWrapper";
 import AuthHeroImage from "@/shared/components/AuthHeroImage/AuthHeroImage";
 import AuthInputField from "@/shared/components/AuthInputField/AuthInputField";
 import Container from "@/shared/components/Container/Container";
+import { signup } from "@/app/auth/auth";
 
 export interface SignUpPageProps {}
 

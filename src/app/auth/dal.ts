@@ -1,11 +1,7 @@
 import { buildUrl, sendRequest } from "@/lib/api";
 import { getTokenFromCookies } from "./cookies-session";
 import { cache } from "react";
-
-interface User {
-  email: string;
-  name: string;
-}
+import { User } from "./auth";
 
 export const getUser = cache(async () => {
   try {

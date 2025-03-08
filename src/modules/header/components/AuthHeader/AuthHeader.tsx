@@ -1,13 +1,15 @@
 "use client";
+
 import Button from "@/shared/components/Button/Button";
 import Icon from "@/shared/components/Icon/Icon";
 import NavItem from "@/shared/components/NavItem/NavItem";
 
-import { signout, User } from "@/app/auth/auth";
 import Link from "next/link";
 
+import { signout, User } from "@/app/auth/auth";
+
 export interface AuthHeaderProps {
-  user: User | null;
+  user?: User | null;
 }
 
 export default function AuthHeader({ user }: AuthHeaderProps) {

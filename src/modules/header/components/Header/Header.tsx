@@ -7,13 +7,14 @@ import Icon from "@/shared/components/Icon/Icon";
 import AuthHeader from "../AuthHeader/AuthHeader";
 import NavLinks from "../NavLinks/NavLinks";
 import MobileMenu from "../MobileMenu/MobileMenu";
-import { getUser } from "@/app/auth/dal";
+
 import { User } from "@/app/auth/auth";
 
-export interface HeaderProps {}
+export interface HeaderProps {
+  user?: User | null;
+}
 
-export default async function Header({}: HeaderProps) {
-  // const user = await getUser();
+export default function Header({ user }: HeaderProps) {
   return (
     <header
       className={clsx(
@@ -27,8 +28,8 @@ export default async function Header({}: HeaderProps) {
       </div>
       <NavLinks />
       <div className="flex gap-[20px]">
-        {/* <AuthHeader user={user} />
-        <MobileMenu user={user} /> */}
+        <AuthHeader user={user} />
+        <MobileMenu user={user} />
       </div>
     </header>
   );
