@@ -6,6 +6,7 @@ import {
   removeTokenFromCookies,
   saveTokenToCookies,
 } from "./cookies-session";
+import { ROUTES } from "@/shared/constants";
 
 interface AuthResponse {
   token: string;
@@ -19,7 +20,7 @@ export interface User {
 }
 
 export const signup = async (name: string, email: string, password: string) => {
-  const url = buildUrl("users", "signup");
+  const url = buildUrl(ROUTES.USERS, ROUTES.SIGNUP);
   const body = JSON.stringify({ email, password, name });
 
   const data = await sendRequest<AuthResponse>(url, {
@@ -32,7 +33,7 @@ export const signup = async (name: string, email: string, password: string) => {
 };
 
 export const signin = async (email: string, password: string) => {
-  const url = buildUrl("users", "signin");
+  const url = buildUrl(ROUTES.USERS, ROUTES.SIGNIN);
   const body = JSON.stringify({ email, password });
 
   const data = await sendRequest<AuthResponse>(url, {
@@ -52,7 +53,7 @@ export const signout = async () => {
     throw new Error("Unauthorized");
   }
 
-  const url = buildUrl("users", "signout");
+  const url = buildUrl(ROUTES.USERS, ROUTES.SIGNOUT);
 
   await sendRequest<void>(url, {
     method: "POST",

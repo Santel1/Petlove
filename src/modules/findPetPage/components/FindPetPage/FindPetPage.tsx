@@ -12,35 +12,6 @@ export interface FindPetPageProps {
 }
 
 export default function FindPetPage({ pets }: FindPetPageProps) {
-  // const [pets, setPets] = useState<PetsResults[]>([]);
-  // const [page, setPage] = useState(1);
-  // const [totalPages, setTotalPages] = useState(1);
-  // const [loading, setLoading] = useState(false);
-  // useEffect(() => {
-  //   setLoading(true);
-  //   getPets(page)
-  //     .then((response) => {
-  //       setPets(response.results);
-  //       setTotalPages(response.totalPages);
-  //       setLoading(false);
-  //       console.log(page);
-  //     })
-  //     .catch((error) => {
-  //       console.error(error);
-  //       setLoading(false);
-  //     });
-  // }, [page]);
-
-  // const goToNextPage = () => setPage((prev) => Math.min(prev + 1, totalPages));
-  // const goToPreviousPage = () => setPage((prev) => Math.max(prev - 1, 1));
-  // const goToFirstPage = () => setPage(1);
-  // const goToLastPage = () => setPage(totalPages);
-
-  // const goToNumberPage = (pageNumber: number) => {
-  //   getPets(pageNumber);
-  //   setPage(pageNumber);
-  // };
-
   return (
     <section>
       <Container>
@@ -52,6 +23,7 @@ export default function FindPetPage({ pets }: FindPetPageProps) {
               {pets.map((petsItem) => (
                 <FindPetItem
                   key={petsItem._id}
+                  id={petsItem._id}
                   imgURL={petsItem.imgURL}
                   petTitle={petsItem.title}
                   petName={petsItem.name}

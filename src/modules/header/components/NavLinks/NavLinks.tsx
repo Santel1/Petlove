@@ -1,5 +1,6 @@
 "use client";
 import NavItem from "@/shared/components/NavItem/NavItem";
+import { ROUTES } from "@/shared/constants";
 import { usePathname } from "next/navigation";
 import React from "react";
 
@@ -9,13 +10,16 @@ export default function NavLinks({}: NavLinksProps) {
   const pathname = usePathname();
   return (
     <ul className="hidden xl:flex gap-[10px]">
-      <NavItem pathname="/news" current={pathname === "/news"}>
+      <NavItem pathname={ROUTES.NEWS} current={pathname === ROUTES.NEWS}>
         News
       </NavItem>
-      <NavItem pathname="/findpet" current={pathname === "/findpet"}>
+      <NavItem pathname={ROUTES.PETS} current={pathname === ROUTES.PETS}>
         Find pet
       </NavItem>
-      <NavItem pathname="/ourfriends" current={pathname === "/ourfriends"}>
+      <NavItem
+        pathname={ROUTES.OUR_FRIENDS}
+        current={pathname === ROUTES.OUR_FRIENDS}
+      >
         Our Friends
       </NavItem>
     </ul>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import Icon from "@/shared/components/Icon/Icon";
 
 export interface FindPetItemProps {
+  id: string;
   imgURL: string;
   petTitle: string;
   petName: string;
@@ -16,6 +17,7 @@ export interface FindPetItemProps {
 }
 
 export default function FindPetItem({
+  id,
   imgURL,
   petTitle,
   petName,
@@ -29,6 +31,7 @@ export default function FindPetItem({
 }: FindPetItemProps) {
   return (
     <li className="flex flex-col max-w-[335px] p-[24px] bg-white rounded-[16px]">
+      <h1 className="text-9xl"></h1>
       <Image
         src={imgURL}
         width={365}

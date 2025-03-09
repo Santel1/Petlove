@@ -7,6 +7,7 @@ import NavItem from "@/shared/components/NavItem/NavItem";
 import Link from "next/link";
 
 import { signout, User } from "@/app/auth/auth";
+import { ROUTES } from "@/shared/constants";
 
 export interface AuthHeaderProps {
   user?: User | null;
@@ -25,7 +26,7 @@ export default function AuthHeader({ user }: AuthHeaderProps) {
           >
             LOG OUT
           </Button>
-          <Link href="/profile" className="flex gap-[10px] group">
+          <Link href={ROUTES.PROFILE} className="flex gap-[10px] group">
             <div className="rounded-full p-[10px] bg-[#fff4df] group-hover:bg-[#f6b83d] fill-[#f6b83d] stroke-[#f6b83d] group-hover:fill-[#fff4df] group-hover:stroke-[#fff4df] transition-all duration-500">
               <Icon iconName="icon-user" width={20} height={20} />
             </div>
@@ -36,10 +37,10 @@ export default function AuthHeader({ user }: AuthHeaderProps) {
         </div>
       ) : (
         <ul className="hidden md:flex xl:flex gap-[10px]">
-          <NavItem pathname="signin" variant="yellow">
+          <NavItem pathname={ROUTES.SIGNIN} variant="yellow">
             Login
           </NavItem>
-          <NavItem pathname="signup" variant="yellowLight">
+          <NavItem pathname={ROUTES.SIGNUP} variant="yellowLight">
             Registration
           </NavItem>
         </ul>

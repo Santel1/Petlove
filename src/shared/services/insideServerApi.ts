@@ -11,8 +11,8 @@ class InsideServerApi {
     return serverUrl;
   }
 
-  getPets = async (page = 1): Promise<Pets> => {
-    const res = await fetch(`${this.serverUrl}/api/find-pet?page=${page}`, {
+  getPets = async (page: number): Promise<Pets> => {
+    const res = await fetch(`${this.serverUrl}/api/notices?page=${page}`, {
       cache: "no-store",
     });
 
@@ -24,7 +24,7 @@ class InsideServerApi {
   };
 
   getOurFriends = async (): Promise<OurFriendsResults[]> => {
-    const res = await fetch(`${this.serverUrl}/api/our-friends`, {
+    const res = await fetch(`${this.serverUrl}/api/friends`, {
       cache: "no-store",
     });
 
@@ -37,7 +37,7 @@ class InsideServerApi {
     return res.json();
   };
 
-  getNews = async (page = 1): Promise<News> => {
+  getNews = async (page: number): Promise<News> => {
     const res = await fetch(`${this.serverUrl}/api/news?page=${page}`, {
       cache: "no-store",
     });
@@ -47,6 +47,37 @@ class InsideServerApi {
     }
 
     return res.json();
+  };
+  addPetToFavorites = async (id: string): Promise<void> => {
+    const res = await fetch(`${this.serverUrl}/api/notices`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    if (!res.ok) {
+      throw new Error(
+        `Failed to add pet to favorites: ${res.status} ${res.statusText}`
+      );
+    }
+  };
+
+  removePetFromFavorites = async (id: string): Promise<void> => {
+    const res = await fetch(`${this.serverUrl}/api/notices`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ id }),
+    });
+
+    if (!res.ok) {
+      throw new Error(
+        `Failed to remove pet from favorites: ${res.status} ${res.statusText}`
+      );
+    }
   };
 }
 

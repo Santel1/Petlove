@@ -7,6 +7,7 @@ import NavItem from "@/shared/components/NavItem/NavItem";
 import Icon from "@/shared/components/Icon/Icon";
 import MobileMenuBtn from "../MobileMenuBtn/MobileMenuBtn";
 import { usePathname } from "next/navigation";
+import { ROUTES } from "@/shared/constants";
 
 export interface MobileMenuProps {
   user?: User | null;
@@ -58,22 +59,22 @@ export default function MobileMenu({ user }: MobileMenuProps) {
         <div className="flex-grow flex flex-col justify-center gap-[20px]">
           <ul className="flex flex-col gap-[20px] items-center">
             <NavItem
-              pathname="/news"
-              current={pathname === "/news"}
+              pathname={ROUTES.NEWS}
+              current={pathname === ROUTES.NEWS}
               onClose={handleToggleVisible}
             >
               News
             </NavItem>
             <NavItem
-              pathname="/findpet"
-              current={pathname === "/findpet"}
+              pathname={ROUTES.PETS}
+              current={pathname === ROUTES.PETS}
               onClose={handleToggleVisible}
             >
               Find pet
             </NavItem>
             <NavItem
-              pathname="/ourfriends"
-              current={pathname === "/ourfriends"}
+              pathname={ROUTES.OUR_FRIENDS}
+              current={pathname === ROUTES.OUR_FRIENDS}
               onClose={handleToggleVisible}
             >
               Our Friends
@@ -96,14 +97,14 @@ export default function MobileMenu({ user }: MobileMenuProps) {
           ) : (
             <ul className="flex flex-col md:flex-row md:justify-center gap-[20px] md:gap-[10px]">
               <NavItem
-                pathname="signin"
+                pathname={ROUTES.SIGNIN}
                 variant="yellow"
                 onClose={handleToggleVisible}
               >
                 Login
               </NavItem>
               <NavItem
-                pathname="signup"
+                pathname={ROUTES.SIGNUP}
                 variant="yellowLight"
                 onClose={handleToggleVisible}
               >

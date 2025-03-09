@@ -2,6 +2,7 @@ import { buildUrl, sendRequest } from "@/lib/api";
 import { getTokenFromCookies } from "./cookies-session";
 import { cache } from "react";
 import { User } from "./auth";
+import { ROUTES } from "@/shared/constants";
 
 export const getUser = cache(async () => {
   try {
@@ -11,7 +12,7 @@ export const getUser = cache(async () => {
       throw new Error("Unauthorized");
     }
 
-    const url = buildUrl("users", "current");
+    const url = buildUrl(ROUTES.USERS, ROUTES.CURRENT_USER);
 
     return await sendRequest<User>(url, {
       method: "GET",
