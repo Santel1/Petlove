@@ -2,7 +2,7 @@ import React from "react";
 
 import { Metadata } from "next";
 import FindPetPage from "@/modules/findPetPage/components/FindPetPage/FindPetPage";
-import { insideServerApi as api } from "@/shared/services";
+import { petsApi as api } from "@/shared/services";
 import Pagination from "@/shared/components/Pagination/Pagination";
 import { ROUTES } from "@/shared/constants";
 

@@ -60,21 +60,21 @@ export default function MobileMenu({ user }: MobileMenuProps) {
           <ul className="flex flex-col gap-[20px] items-center">
             <NavItem
               pathname={ROUTES.NEWS}
-              current={pathname === ROUTES.NEWS}
+              current={pathname === `/${ROUTES.NEWS}`}
               onClose={handleToggleVisible}
             >
               News
             </NavItem>
             <NavItem
               pathname={ROUTES.PETS}
-              current={pathname === ROUTES.PETS}
+              current={pathname === `/${ROUTES.PETS}`}
               onClose={handleToggleVisible}
             >
               Find pet
             </NavItem>
             <NavItem
               pathname={ROUTES.OUR_FRIENDS}
-              current={pathname === ROUTES.OUR_FRIENDS}
+              current={pathname === `/${ROUTES.OUR_FRIENDS}`}
               onClose={handleToggleVisible}
             >
               Our Friends

@@ -9,4 +9,5 @@ export const ROUTES = {
   SIGNUP: "signup",
   PROFILE: "profile",
   ADD_TO_FAVORITE: "notices/favorites/add",
+  DELETE_FROM_FAVORITE: "notices/favorites/remove",
 };

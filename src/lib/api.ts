@@ -1,7 +1,3 @@
-import { getTokenFromCookies } from "@/app/auth/cookies-session";
-import { ROUTES } from "@/shared/constants";
-import { NextResponse } from "next/server";
-
 export interface WorkDay {
   _id: string;
   isOpen: boolean;

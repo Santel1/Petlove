@@ -1,1 +1,1 @@
-export { insideServerApi } from "./insideServerApi";
+export { petsApi } from "./petsApi";

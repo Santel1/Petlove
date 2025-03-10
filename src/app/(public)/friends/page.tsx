@@ -1,7 +1,7 @@
 import React from "react";
 import OurFriendsPage from "@/modules/ourFriendsPage/components/OurFriendsPage/OurFriendsPage";
 import { Metadata } from "next";
-import { insideServerApi as api } from "@/shared/services";
+import { petsApi as api } from "@/shared/services";
 
 export interface PageProps {}
 
