@@ -9,7 +9,8 @@ export const getUser = cache(async () => {
     const token = getTokenFromCookies();
 
     if (!token) {
-      throw new Error("Unauthorized");
+      return null;
+      // throw new Error("Unauthorized");
     }
 
     const url = buildUrl(ROUTES.USERS, ROUTES.CURRENT_USER);

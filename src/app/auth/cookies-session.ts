@@ -32,3 +32,10 @@ export const removeTokenFromCookies = () => {
   cookies().delete(TOKEN_KEY);
   redirect("/signin");
 };
+
+export const sessionCookies = () => {
+  const cookieStore = cookies();
+  const token = cookieStore.get(TOKEN_KEY)?.value;
+
+  return token || null;
+};

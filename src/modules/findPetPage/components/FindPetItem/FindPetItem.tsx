@@ -1,8 +1,14 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Icon from "@/shared/components/Icon/Icon";
+import { petsApi as api } from "@/shared/services";
+import { User } from "@/app/auth/auth";
+import clsx from "clsx";
 
 export interface FindPetItemProps {
+  user: User | null;
+  token: string | null;
   id: string;
   imgURL: string;
   petTitle: string;
@@ -17,6 +23,8 @@ export interface FindPetItemProps {
 }
 
 export default function FindPetItem({
+  user,
+  token,
   id,
   imgURL,
   petTitle,
@@ -29,6 +37,28 @@ export default function FindPetItem({
   popularity,
   textButton = "Learn more",
 }: FindPetItemProps) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    if (user) {
+      setIsFavorite(user.noticesFavorites.some((pet) => pet._id === id));
+    }
+  }, [user, id]);
+
+  const handleToggleFavorite = async () => {
+    if (!user || !token) {
+      alert("Пожалуйста, войдите в аккаунт!");
+      return;
+    }
+    if (isFavorite) {
+      await api.removePetFromFavorites(id, token);
+      setIsFavorite(false);
+    } else {
+      await api.addPetToFavorites(id, token);
+      setIsFavorite(true);
+    }
+  };
+
   return (
     <li className="flex flex-col max-w-[335px] p-[24px] bg-white rounded-[16px]">
       <h1 className="text-9xl"></h1>
@@ -101,8 +131,17 @@ export default function FindPetItem({
         >
           {textButton}
         </button>
-        <button className="rounded-full bg-[#fff4df] p-[14px] fill-transparent stroke-[#f6b83d] hover:fill-[#f6b83d] transition-colors duration-300">
-          <Icon iconName="icon-heart" className="w-[18px] h-[18px]" />
+        <button
+          onClick={handleToggleFavorite}
+          className="rounded-full bg-[#fff4df] p-[14px] fill-transparent stroke-[#f6b83d] hover:fill-[#f6b83d] transition-colors duration-300"
+        >
+          <Icon
+            iconName="icon-heart"
+            className={clsx(
+              "w-[18px] h-[18px] transition-all duration-300",
+              isFavorite && "fill-[#f6b83d] transform scale-[1.2]"
+            )}
+          />
         </button>
       </div>
     </li>

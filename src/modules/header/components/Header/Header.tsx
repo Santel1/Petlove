@@ -9,12 +9,13 @@ import NavLinks from "../NavLinks/NavLinks";
 import MobileMenu from "../MobileMenu/MobileMenu";
 
 import { User } from "@/app/auth/auth";
+import { getUser } from "@/app/auth/dal";
 
 export interface HeaderProps {
   user?: User | null;
 }
 
-export default function Header({ user }: HeaderProps) {
+export default async function Header({ user }: HeaderProps) {
   return (
     <header
       className={clsx(

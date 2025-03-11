@@ -6,12 +6,15 @@ import SearchBarFindPet from "../SearchBarFindPet/SearchBarFindPet";
 import FindPetItem from "../FindPetItem/FindPetItem";
 import Container from "@/shared/components/Container/Container";
 import Title from "@/shared/components/Title/Title";
+import { User } from "@/app/auth/auth";
 
 export interface FindPetPageProps {
   pets: PetsResults[];
+  token: string | null;
+  user: User | null;
 }
 
-export default function FindPetPage({ pets }: FindPetPageProps) {
+export default function FindPetPage({ pets, token, user }: FindPetPageProps) {
   return (
     <section>
       <Container>
@@ -22,6 +25,8 @@ export default function FindPetPage({ pets }: FindPetPageProps) {
             <List className="mb-[44px]">
               {pets.map((petsItem) => (
                 <FindPetItem
+                  user={user}
+                  token={token}
                   key={petsItem._id}
                   id={petsItem._id}
                   imgURL={petsItem.imgURL}

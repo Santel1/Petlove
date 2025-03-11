@@ -42,31 +42,40 @@ class PetsApi {
 
     return data;
   };
-  // addPetToFavorites = async (id: string) => {
-  //   const url = buildUrl(ROUTES.ADD_TO_FAVORITE, id);
-  //   const token = getTokenFromCookies();
+  addPetToFavorites = async (id: string, token: string | null) => {
+    if (!token) {
+      throw new Error("Unauthorized");
+    }
 
-  //   const data = await sendRequest(url, {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: `Bearer ${token}`,
-  //     },
-  //   });
+    const url = buildUrl(ROUTES.ADD_TO_FAVORITE, id);
 
-  //   return data;
-  // };
+    const data = await sendRequest(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
 
-  // removePetFromFavorites = async (id: string) => {
-  //   const url = buildUrl(ROUTES.DELETE_FROM_FAVORITE, id);
+    return data;
+  };
 
-  //   const data = await sendRequest(url, {
-  //     method: "DELETE",
-  //     headers: { "Content-Type": "application/json" },
-  //   });
+  removePetFromFavorites = async (id: string, token: string | null) => {
+    if (!token) {
+      throw new Error("Unauthorized");
+    }
+    const url = buildUrl(ROUTES.DELETE_FROM_FAVORITE, id);
 
-  //   return data;
-  // };
+    const data = await sendRequest(url, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`,
+      },
+    });
+
+    return data;
+  };
 }
 
 export const petsApi = new PetsApi();

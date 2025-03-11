@@ -1,7 +1,7 @@
 "use client";
 
+import { Loader } from "@/shared/components";
 import { useEffect } from "react";
-import { Loader } from "../shared/components";
 
 const Loading = () => {
   useEffect(() => {
